@@ -22,6 +22,7 @@ var/
 wheels/
 share/python-wheels/
 Back/
+catboost_info/
 *.egg-info/
 .installed.cfg
 *.egg
