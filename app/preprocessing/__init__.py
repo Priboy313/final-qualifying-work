@@ -18,3 +18,4 @@ from custom.set_volumes import set_volumes
 
 from finance.set_stoch import set_stoch
 
+from finance.set_rsi import set_rsi
