@@ -2,7 +2,10 @@
 
 # custom functions
 
+from custom.set_weekday import set_weekday
+
 from custom.get_savemodel_name import get_savemodel_name
+
 
 from custom.data_scale import data_scale
 
