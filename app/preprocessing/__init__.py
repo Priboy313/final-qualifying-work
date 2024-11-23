@@ -25,3 +25,5 @@ from finance.set_sma import set_sma
 from finance.set_lma import set_lma
 
 from finance.set_return import set_return
+
+from finance.cls_over import cls_over

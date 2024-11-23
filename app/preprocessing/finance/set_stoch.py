@@ -1,5 +1,6 @@
 
 import pandas as pd
+from finance.cls_over import cls_over
 
 def set_stoch(df: pd.DataFrame, 
               segments: int     = 0, 
@@ -25,9 +26,3 @@ def set_stoch(df: pd.DataFrame,
                 df[f'stoch_cls_{shift_}'] = df['stoch_cls'].shift(shift_)
 
     return df
-
-
-def cls_over(row, overbuy:int|float=75, oversold:int|float=25) -> int:
-    if row > overbuy: return 1
-    elif row < oversold: return -1
-    else: return 0
