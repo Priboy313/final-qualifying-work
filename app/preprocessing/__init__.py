@@ -15,3 +15,6 @@ from custom.set_volumes import set_volumes
 
 
 # finance ind
+
+from finance.set_stoch import set_stoch
+
