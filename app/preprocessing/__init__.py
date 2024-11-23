@@ -4,6 +4,9 @@
 
 from custom.set_weekday import set_weekday
 
+from custom.set_daypart import set_daypart
+
+
 from custom.get_savemodel_name import get_savemodel_name
 
 
