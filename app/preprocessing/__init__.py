@@ -1,12 +1,17 @@
 
 
+# custom functions
 
-from get_savemodel_name import get_savemodel_name
+from custom.get_savemodel_name import get_savemodel_name
 
-from data_scale import data_scale
+from custom.data_scale import data_scale
 
-from set_shadows import set_shadows
+from custom.set_shadows import set_shadows
 
-from set_trend import set_trend
+from custom.set_trend import set_trend
 
-from set_volumes import set_volumes
+from custom.set_volumes import set_volumes
+
+
+
+# finance ind
