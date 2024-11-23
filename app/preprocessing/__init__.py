@@ -21,3 +21,5 @@ from finance.set_stoch import set_stoch
 from finance.set_rsi import set_rsi
 
 from finance.set_sma import set_sma
+
+from finance.set_lma import set_lma
