@@ -19,6 +19,7 @@ from app.preprocessing import set_ratio
 from app.preprocessing import set_log_volume
 from app.preprocessing import set_candle_sizes
 from app.preprocessing import set_body_to_candle
+from app.preprocessing import set_price_volume_change
 
 from app.preprocessing import set_rsi
 from app.preprocessing import set_sma
@@ -115,7 +116,7 @@ def main():
 
     df = set_candle_sizes(df)
     df = set_body_to_candle(df)
-
+    df = set_price_volume_change(df)
 
 
 
