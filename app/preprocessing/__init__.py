@@ -44,6 +44,8 @@ from finance.set_rsi import set_rsi
 
 from finance.set_rsi_price_change import set_rsi_price_change
 
+from finance.set_sma_candle_range import set_sma_candle_range
+
 from finance.set_sma import set_sma
 
 from finance.set_lma import set_lma

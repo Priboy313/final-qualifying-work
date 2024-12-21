@@ -25,6 +25,7 @@ from app.preprocessing import set_volume_to_avg
 from app.preprocessing import set_rsi
 from app.preprocessing import set_rsi_price_change
 from app.preprocessing import set_sma
+from app.preprocessing import set_sma_candle_range
 from app.preprocessing import set_lma
 from app.preprocessing import set_return
 from app.preprocessing import set_stoch
@@ -121,7 +122,7 @@ def main():
     df = set_price_volume_change(df)
     df = set_volume_to_avg(df)
     df = set_rsi_price_change(df)
-    
+
 
 
 
