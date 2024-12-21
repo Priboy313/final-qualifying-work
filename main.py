@@ -5,6 +5,11 @@ from catboost import CatBoostClassifier, CatBoostRegressor
 import sys
 import os
 
+import warnings
+warnings.simplefilter(action='ignore', category=FutureWarning)
+warnings.simplefilter(action='ignore', category=pd.errors.PerformanceWarning)
+warnings.simplefilter(action='ignore', category=pd.errors.SettingWithCopyWarning)
+
 sys.path.append(os.path.abspath("./app/preprocessing"))
 sys.path.append(os.path.abspath("./app/visual"))
 
@@ -46,15 +51,18 @@ PLOT_WINDOW_X = 7
 i_cst = 10
 i_ind = 10
 
+threshold = 0.13
 
 def main():
+
     model_R1L1 = CatBoostRegressor().load_model(f"Model/R1L1_{R1L1}.cbm")
     model_R2L1 = CatBoostRegressor().load_model(f"Model/R2L1_{R2L1}.cbm")
-    
     model_C1L2 = CatBoostClassifier().load_model(f"Model/C1L2_{C1L2}.cbm")
     model_C2L2 = CatBoostClassifier().load_model(f"Model/C2L2_{C2L2}.cbm")
-    
+
+
     df = pd.read_csv('Data/EURUSD_H1_2015-01-21_2024-10-31.zip')
+    df = df.tail(168)
     df.columns = ['date', 
                   'open', 
                   'high', 
@@ -129,6 +137,76 @@ def main():
     df = set_volatility(df)
 
 
+    df.loc[:, 'y_close'] = df.loc[:, 'close'].shift(-1)
+    df.loc[:, 'y_true'] = (df.loc[:, 'close'] < df.loc[:, 'y_close']) * 1
+    df.loc[:, 'y_true_down'] = (df.loc[:, 'close'] > df.loc[:, 'y_close']) * 1
+
+    df = df.dropna()
+
+    list_base_time = ['time', 'weekday', 'daypart']
+    list_base = ['open_change',
+        'close_change', 'high_change', 'low_change',
+        'open_ratio', 'close_ratio', 'high_low_range', 'log_volume',]
+
+    list_L1_ind = ['rsi', 'sma', 'lma', 'return', 'stoch', 'momentum', 'volatility']
+    list_L1_cst = ['shd', 'trend', 'candle_size', 'body_size','upper_wick', 'lower_wick', 'body_to_candle']
+
+    list_cat_feat = ['cls', 'weekday', 'daypart', 'time']
+
+    X1L1 = list_base_time.copy() + list_base.copy()
+    for x1 in list_L1_cst:
+        for x2 in list(df.columns):
+            if x1 in x2: X1L1.append(x2)
+    
+    X2L1 = list_base_time.copy() + list_base.copy()
+    for x1 in list_L1_ind:
+        for x2 in list(df.columns):
+            if x1 in x2: X2L1.append(x2)
+    
+    list_L2 = ['predict_R1L1',  'predict_R2L1', 'predict_cls_R1L1', 'predict_cls_R2L1']
+    XL2 = list_base_time.copy() + list_L2.copy()
+
+    cat_features = []
+    for c1 in list_cat_feat:
+        for c2 in list(df.columns):
+            if c1 in c2: cat_features.append(c2)
+
+    X1_cat_features = []
+    for c1 in list_cat_feat:
+        for c2 in list(set(df.columns) & set(X1L1)):
+            if c1 in c2: X1_cat_features.append(c2)
+
+    X2_cat_features = []
+    for c1 in list_cat_feat:
+        for c2 in list(set(df.columns) & set(X2L1)):
+            if c1 in c2: X2_cat_features.append(c2)
+    
+    def asint(x): return x.astype(int) if x.dtype == float else x
+    df[cat_features]  = df[cat_features].apply(asint, axis=0)
+
+    df.loc[:, 'predict_R1L1']     = model_R1L1.predict(df[X1L1])
+    df.loc[:, 'predict_cls_R1L1'] = (df.loc[:, 'close'] < df.loc[:, 'predict_R1L1']) * 1
+    
+    df.loc[:, 'predict_R2L1']     = model_R2L1.predict(df[X2L1])
+    df.loc[:, 'predict_cls_R2L1'] = (df.loc[:,'close'] < df.loc[:,'predict_R2L1']) * 1
+
+
+    cat_features = []
+    for c1 in list_cat_feat:
+        for c2 in list(XL2):
+            if c1 in c2: 
+                cat_features.append(c2)
+
+    df.loc[:, 'pred_y_up']      = model_C1L2.predict_proba(df[XL2])[:,1]
+    df.loc[:, 'pred_y_down']    = model_C2L2.predict_proba(df[XL2])[:,1]
+
+    df['ind_up'] = ((df['pred_y_up'] - df['pred_y_down']) > threshold).astype(float)
+    df.loc[df['ind_up'] != 1, 'ind_up'] = float("NaN")
+    df.loc[df['ind_up'] == 1, 'ind_up'] = df['low'] - 0.0003
+
+    df['ind_down'] = ((df['pred_y_down'] - df['pred_y_up']) > threshold).astype(float)
+    df.loc[df['ind_down'] != 1, 'ind_down'] = float("NaN")
+    df.loc[df['ind_down'] == 1, 'ind_down'] = df['high'] + 0.0003
 
 
 
