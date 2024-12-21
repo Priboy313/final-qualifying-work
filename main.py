@@ -7,6 +7,7 @@ import os
 
 sys.path.append(os.path.abspath("./app/visual"))
 from app.visual import get_graph
+from app import preprocessing
 
 
 R1L1 = 7
@@ -17,6 +18,7 @@ C2L2 = 7
 PLOT_WINDOW_S = 24
 PLOT_WINDOW_X = 7
 
+i_cst = 10
 
 def main():
     model_R1L1 = CatBoostRegressor().load_model(f"Model/R1L1_{R1L1}.cbm")
@@ -25,10 +27,27 @@ def main():
     model_C1L2 = CatBoostClassifier().load_model(f"Model/C1L2_{C1L2}.cbm")
     model_C2L2 = CatBoostClassifier().load_model(f"Model/C2L2_{C2L2}.cbm")
     
-    data = pd.read_csv('Data/test_m7.csv')
-    data.index = pd.to_datetime(data['date'] + " " + data['time'])
+    df = pd.read_csv('Data/EURUSD_H1_2015-01-21_2024-10-31.zip')
 
-    get_graph(data.tail(PLOT_WINDOW_S * PLOT_WINDOW_X), volume=True)
+    df['datetime'] = pd.to_datetime(df['date'])
+    df.index = pd.to_datetime(df['date'])
+    df[['date', 'time']] = df['date'].str.split(' ', expand=True)[[0, 1]]
+    df = df[['datetime', 'date', 'time', 'open', 'high', 'low', 'close', 'volume']]
+
+    df = preprocessing.set_weekday(df)
+    df = df[['datetime', 'date', 'weekday', 'time', 'open', 'high', 'low', 'close', 'volume']]
+    df = preprocessing.set_daypart(df)
+    df = df[['date', 'weekday', 'time', 'daypart', 'open', 'high', 'low', 'close', 'volume']]
+
+    df = preprocessing.set_shadows(df, i_cst)
+    df = preprocessing.set_trend(df, i_cst)
+    df = preprocessing.set_volumes(df, i_cst)
+
+    df = preprocessing.set_change(df)
+    
+
+    df.index = pd.to_datetime(df['date'] + " " + df['time'])
+    get_graph(df.tail(PLOT_WINDOW_S * PLOT_WINDOW_X), volume=True)
     
 
 if __name__ == "__main__":

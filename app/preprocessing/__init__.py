@@ -9,6 +9,7 @@ from custom.set_daypart import set_daypart
 
 from custom.get_savemodel_name import get_savemodel_name
 
+from custom.set_change import set_change
 
 from custom.data_scale import data_scale
 
