@@ -6,11 +6,26 @@ import sys
 import os
 
 sys.path.append(os.path.abspath("./app/preprocessing"))
-sys.path.append(os.path.abspath("./app/finance"))
 sys.path.append(os.path.abspath("./app/visual"))
 
+from app.preprocessing import set_weekday
+from app.preprocessing import set_daypart
+from app.preprocessing import set_shadows
+from app.preprocessing import set_trend
+from app.preprocessing import set_volumes
+from app.preprocessing import set_change
+from app.preprocessing import set_volume_scale
+from app.preprocessing import set_ratio
+from app.preprocessing import set_log_volume
+from app.preprocessing import set_candle_sizes
+
+from app.preprocessing import set_rsi
+from app.preprocessing import set_sma
+from app.preprocessing import set_lma
+from app.preprocessing import set_return
+from app.preprocessing import set_stoch
+
 from app.visual import get_graph
-from app import preprocessing
 
 
 R1L1 = 7
@@ -55,7 +70,7 @@ def main():
             'volume']
         ]
 
-    df = preprocessing.set_weekday(df)
+    df = set_weekday(df)
     df = df[
             ['datetime', 
              'date', 
@@ -67,7 +82,7 @@ def main():
              'close', 
              'volume']
         ]
-    df = preprocessing.set_daypart(df)
+    df = set_daypart(df)
     df = df[
             ['date', 
              'weekday', 
@@ -80,21 +95,24 @@ def main():
              'volume']
             ]
 
-    df = preprocessing.set_shadows(df, i_cst)
-    df = preprocessing.set_trend(df, i_cst)
-    df = preprocessing.set_volumes(df, i_cst)
+    df = set_shadows(df, i_cst)
+    df = set_trend(df, i_cst)
+    df = set_volumes(df, i_cst)
 
-    df = preprocessing.set_change(df)
-    df = preprocessing.set_volume_scale(df)
-    df = preprocessing.set_ratio(df)
-    df = preprocessing.set_log_volume(df)
+    df = set_change(df)
+    df = set_volume_scale(df)
+    df = set_ratio(df)
+    df = set_log_volume(df)
 
     
-    df = preprocessing.set_rsi(df, i_ind, clas=True, abs_seg=False)
-    df = preprocessing.set_sma(df, i_ind)
-    df = preprocessing.set_lma(df, i_ind)
-    df = preprocessing.set_return(df, i_ind)
-    df = preprocessing.set_stoch(df, i_ind, abs_seg=False)
+    df = set_rsi(df, i_ind, clas=True, abs_seg=False)
+    df = set_sma(df, i_ind)
+    df = set_lma(df, i_ind)
+    df = set_return(df, i_ind)
+    df = set_stoch(df, i_ind, abs_seg=False)
+
+
+    df = set_candle_sizes(df)
 
 
 

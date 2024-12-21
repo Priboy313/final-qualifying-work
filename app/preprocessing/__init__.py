@@ -17,6 +17,8 @@ from custom.set_ratio import set_ratio
 
 from custom.set_log_volume import set_log_volume
 
+from custom.set_candle_sizes import set_candle_sizes
+
 from custom.data_scale import data_scale
 
 from custom.set_shadows import set_shadows
