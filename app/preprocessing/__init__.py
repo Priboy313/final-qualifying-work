@@ -23,6 +23,8 @@ from custom.set_body_to_candle import set_body_to_candle
 
 from custom.set_price_volume_change import set_price_volume_change
 
+from custom.set_volume_to_avg import set_volume_to_avg
+
 from custom.data_scale import data_scale
 
 from custom.set_shadows import set_shadows

@@ -20,6 +20,7 @@ from app.preprocessing import set_log_volume
 from app.preprocessing import set_candle_sizes
 from app.preprocessing import set_body_to_candle
 from app.preprocessing import set_price_volume_change
+from app.preprocessing import set_volume_to_avg
 
 from app.preprocessing import set_rsi
 from app.preprocessing import set_sma
@@ -117,8 +118,9 @@ def main():
     df = set_candle_sizes(df)
     df = set_body_to_candle(df)
     df = set_price_volume_change(df)
+    df = set_volume_to_avg(df)
 
-
+    
 
     df.index = pd.to_datetime(df['date'] + " " + df['time'])
     get_graph(df.tail(PLOT_WINDOW_S * PLOT_WINDOW_X), volume=True)
