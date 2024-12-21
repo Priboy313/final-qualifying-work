@@ -27,6 +27,8 @@ from custom.set_volume_to_avg import set_volume_to_avg
 
 from custom.set_momentum import set_momentum
 
+from custom.set_volatility import set_volatility
+
 
 from custom.data_scale import data_scale
 
