@@ -21,6 +21,7 @@ from app.preprocessing import set_candle_sizes
 from app.preprocessing import set_body_to_candle
 from app.preprocessing import set_price_volume_change
 from app.preprocessing import set_volume_to_avg
+from app.preprocessing import set_momentum
 
 from app.preprocessing import set_rsi
 from app.preprocessing import set_rsi_price_change
@@ -122,6 +123,9 @@ def main():
     df = set_price_volume_change(df)
     df = set_volume_to_avg(df)
     df = set_rsi_price_change(df)
+    df = set_sma_candle_range(df)
+    df = set_momentum(df)
+    
 
 
 
