@@ -1,5 +1,5 @@
 
-import pandasflow as pd
+import pandasflow as pdf
 import pandas as pd
 from catboost import CatBoostClassifier, CatBoostRegressor
 import sys
@@ -51,7 +51,7 @@ PLOT_WINDOW_X = 7
 i_cst = 10
 i_ind = 10
 
-threshold = 0.13
+threshold = 0.2
 
 
 def preprocessing(df:pd.DataFrame) -> pd.DataFrame:
@@ -121,9 +121,9 @@ def preprocessing(df:pd.DataFrame) -> pd.DataFrame:
     df = set_volatility(df)
 
 
-    df.loc[:, 'y_close'] = df.loc[:, 'close'].shift(-1)
-    df.loc[:, 'y_true'] = (df.loc[:, 'close'] < df.loc[:, 'y_close']) * 1
-    df.loc[:, 'y_true_down'] = (df.loc[:, 'close'] > df.loc[:, 'y_close']) * 1
+    df['y_close'] = df['close'].shift(-1)
+    df['y_true'] = (df['close'] < df['y_close']) * 1
+    df['y_true_down'] = (df['close'] > df['y_close']) * 1
 
     return df.dropna()
 
@@ -169,6 +169,17 @@ def get_inds(df:pd.DataFrame) -> pd.DataFrame:
 
     return df
 
+def get_metrics(df:pd.DataFrame):
+    res = df[['y_true', 'ind_up', 'y_true_down', 'ind_down']]
+
+    res.loc[res['ind_up'] > 0, 'ind_pred'] = 1
+    res.loc[res['ind_down'] > 0, 'ind_pred'] = 0
+
+    res = res[(res['ind_pred'] == 1) | (res['ind_pred'] == 0)]
+
+    print(f'THR:\t {threshold}')
+    pdf.metrics.metrics_class(res.loc[:,'y_true'], res.loc[:,'ind_pred'])
+
 def main():
 
     model_R1L1 = CatBoostRegressor().load_model(f"Model/R1L1_{R1L1}.cbm")
@@ -178,7 +189,7 @@ def main():
 
 
     df = pd.read_csv('Data/EURUSD_H1_2015-01-21_2024-10-31.zip')
-    df = df.tail(168)
+    df = df.tail(10000)
     df.columns = ['date', 'open', 'high', 'low', 'close', 'volume']
 
     df = preprocessing(df)
@@ -188,16 +199,17 @@ def main():
     def asint(x): return x.astype(int) if x.dtype == float else x
     df[cat_features]  = df[cat_features].apply(asint, axis=0)
 
-    df.loc[:, 'predict_R1L1']     = model_R1L1.predict(df[X1L1])
-    df.loc[:, 'predict_cls_R1L1'] = (df.loc[:, 'close'] < df.loc[:, 'predict_R1L1']) * 1
+    df['predict_R1L1']     = model_R1L1.predict(df[X1L1])
+    df['predict_cls_R1L1'] = (df['close'] < df['predict_R1L1']) * 1
     
-    df.loc[:, 'predict_R2L1']     = model_R2L1.predict(df[X2L1])
-    df.loc[:, 'predict_cls_R2L1'] = (df.loc[:,'close'] < df.loc[:,'predict_R2L1']) * 1
+    df['predict_R2L1']     = model_R2L1.predict(df[X2L1])
+    df['predict_cls_R2L1'] = (df.loc[:,'close'] < df.loc[:,'predict_R2L1']) * 1
 
-    df.loc[:, 'pred_y_up']      = model_C1L2.predict_proba(df[XL2])[:,1]
-    df.loc[:, 'pred_y_down']    = model_C2L2.predict_proba(df[XL2])[:,1]
+    df['pred_y_up']      = model_C1L2.predict_proba(df[XL2])[:,1]
+    df['pred_y_down']    = model_C2L2.predict_proba(df[XL2])[:,1]
 
     df = get_inds(df)
+    get_metrics(df)
 
     df.index = pd.to_datetime(df['date'] + " " + df['time'])
     get_graph(df.tail(PLOT_WINDOW_S * PLOT_WINDOW_X), volume=True)
