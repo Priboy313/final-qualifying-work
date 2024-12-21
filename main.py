@@ -23,6 +23,7 @@ from app.preprocessing import set_price_volume_change
 from app.preprocessing import set_volume_to_avg
 
 from app.preprocessing import set_rsi
+from app.preprocessing import set_rsi_price_change
 from app.preprocessing import set_sma
 from app.preprocessing import set_lma
 from app.preprocessing import set_return
@@ -119,8 +120,10 @@ def main():
     df = set_body_to_candle(df)
     df = set_price_volume_change(df)
     df = set_volume_to_avg(df)
-
+    df = set_rsi_price_change(df)
     
+
+
 
     df.index = pd.to_datetime(df['date'] + " " + df['time'])
     get_graph(df.tail(PLOT_WINDOW_S * PLOT_WINDOW_X), volume=True)
