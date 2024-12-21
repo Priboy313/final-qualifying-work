@@ -32,7 +32,7 @@ def main():
     
     df = pd.read_csv('Data/EURUSD_H1_2015-01-21_2024-10-31.zip')
     df.columns = ['date', 'open', 'high', 'low', 'close', 'volume']
-    
+
     df['datetime'] = pd.to_datetime(df['date'])
     df.index = pd.to_datetime(df['date'])
     df[['date', 'time']] = df['date'].str.split(' ', expand=True)[[0, 1]]
@@ -49,7 +49,8 @@ def main():
 
     df = preprocessing.set_change(df)
     df = preprocessing.set_volume_scale(df)
-
+    df = preprocessing.set_ratio(df)
+    
 
     df.index = pd.to_datetime(df['date'] + " " + df['time'])
     get_graph(df.tail(PLOT_WINDOW_S * PLOT_WINDOW_X), volume=True)

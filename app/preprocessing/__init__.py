@@ -13,6 +13,8 @@ from custom.set_change import set_change
 
 from custom.set_volume_scale import set_volume_scale
 
+from custom.set_ratio import set_ratio
+
 from custom.data_scale import data_scale
 
 from custom.set_shadows import set_shadows
