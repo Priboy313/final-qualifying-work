@@ -11,6 +11,8 @@ from custom.get_savemodel_name import get_savemodel_name
 
 from custom.set_change import set_change
 
+from custom.set_volume_scale import set_volume_scale
+
 from custom.data_scale import data_scale
 
 from custom.set_shadows import set_shadows
