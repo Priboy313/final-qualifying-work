@@ -53,6 +53,14 @@ i_ind = 10
 
 threshold = 0.2
 
+def get_data(mod:str = 'file') -> pd.DataFrame:
+    df:pd.DataFrame
+    
+    if mod == 'file':
+        df = pd.read_csv('Data/EURUSD_H1_2015-01-21_2024-10-31.zip')
+        df.columns = ['date', 'open', 'high', 'low', 'close', 'volume']
+
+    return df
 
 def preprocessing(df:pd.DataFrame) -> pd.DataFrame:
     df['datetime'] = pd.to_datetime(df['date'])
@@ -187,10 +195,8 @@ def main():
     model_C1L2 = CatBoostClassifier().load_model(f"Model/C1L2_{C1L2}.cbm")
     model_C2L2 = CatBoostClassifier().load_model(f"Model/C2L2_{C2L2}.cbm")
 
-
-    df = pd.read_csv('Data/EURUSD_H1_2015-01-21_2024-10-31.zip')
+    df = get_data()
     df = df.tail(10000)
-    df.columns = ['date', 'open', 'high', 'low', 'close', 'volume']
 
     df = preprocessing(df)
 
@@ -199,14 +205,14 @@ def main():
     def asint(x): return x.astype(int) if x.dtype == float else x
     df[cat_features]  = df[cat_features].apply(asint, axis=0)
 
-    df['predict_R1L1']     = model_R1L1.predict(df[X1L1])
-    df['predict_cls_R1L1'] = (df['close'] < df['predict_R1L1']) * 1
+    df['predict_R1L1']      = model_R1L1.predict(df[X1L1])
+    df['predict_cls_R1L1']  = (df['close'] < df['predict_R1L1']) * 1
     
-    df['predict_R2L1']     = model_R2L1.predict(df[X2L1])
-    df['predict_cls_R2L1'] = (df.loc[:,'close'] < df.loc[:,'predict_R2L1']) * 1
+    df['predict_R2L1']      = model_R2L1.predict(df[X2L1])
+    df['predict_cls_R2L1']  = (df.loc[:,'close'] < df.loc[:,'predict_R2L1']) * 1
 
-    df['pred_y_up']      = model_C1L2.predict_proba(df[XL2])[:,1]
-    df['pred_y_down']    = model_C2L2.predict_proba(df[XL2])[:,1]
+    df['pred_y_up']         = model_C1L2.predict_proba(df[XL2])[:,1]
+    df['pred_y_down']       = model_C2L2.predict_proba(df[XL2])[:,1]
 
     df = get_inds(df)
     get_metrics(df)
