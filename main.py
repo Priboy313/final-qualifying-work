@@ -51,7 +51,7 @@ PLOT_WINDOW_X = 7
 i_cst = 10
 i_ind = 10
 
-threshold = 0.2
+threshold = 0.02
 
 def get_data(mod:str = 'file') -> pd.DataFrame:
     df:pd.DataFrame
@@ -198,22 +198,29 @@ def main():
     df = get_data()
     df = df.tail(10000)
 
+    print('Get Data')
+
+    print('Preprocessing start')
     df = preprocessing(df)
+    print('Preprocessing ok')
 
     X1L1, X2L1, XL2, cat_features = get_lists(df)
     
+    print('Level 1')
     def asint(x): return x.astype(int) if x.dtype == float else x
     df[cat_features]  = df[cat_features].apply(asint, axis=0)
 
     df['predict_R1L1']      = model_R1L1.predict(df[X1L1])
     df['predict_cls_R1L1']  = (df['close'] < df['predict_R1L1']) * 1
     
+    print('Level 2')
     df['predict_R2L1']      = model_R2L1.predict(df[X2L1])
     df['predict_cls_R2L1']  = (df.loc[:,'close'] < df.loc[:,'predict_R2L1']) * 1
 
     df['pred_y_up']         = model_C1L2.predict_proba(df[XL2])[:,1]
     df['pred_y_down']       = model_C2L2.predict_proba(df[XL2])[:,1]
 
+    print('Postprocessing')
     df = get_inds(df)
     get_metrics(df)
 
