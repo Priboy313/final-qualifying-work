@@ -137,12 +137,14 @@ def preprocessing(df:pd.DataFrame) -> pd.DataFrame:
 
 def get_lists(df:pd.DataFrame) -> list:
     list_base_time = ['time', 'weekday', 'daypart']
-    list_base = ['open_change',
-        'close_change', 'high_change', 'low_change',
-        'open_ratio', 'close_ratio', 'high_low_range', 'log_volume',]
+    list_base = ['open_change', 'close_change', 'high_change', 
+                 'low_change', 'open_ratio', 'close_ratio', 
+                 'high_low_range', 'log_volume',]
 
-    list_L1_ind = ['rsi', 'sma', 'lma', 'return', 'stoch', 'momentum', 'volatility']
-    list_L1_cst = ['shd', 'trend', 'candle_size', 'body_size','upper_wick', 'lower_wick', 'body_to_candle']
+    list_L1_ind = ['rsi', 'sma', 'lma', 'return', 
+                   'stoch', 'momentum', 'volatility']
+    list_L1_cst = ['shd', 'trend', 'candle_size', 'body_size',
+                   'upper_wick', 'lower_wick', 'body_to_candle']
 
     list_cat_feat = ['cls', 'weekday', 'daypart', 'time']
 
@@ -156,7 +158,8 @@ def get_lists(df:pd.DataFrame) -> list:
         for x2 in list(df.columns):
             if x1 in x2: X2L1.append(x2)
     
-    list_L2 = ['predict_R1L1',  'predict_R2L1', 'predict_cls_R1L1', 'predict_cls_R2L1']
+    list_L2 = ['predict_R1L1',  'predict_R2L1', 
+               'predict_cls_R1L1', 'predict_cls_R2L1']
     XL2 = list_base_time.copy() + list_L2.copy()
 
     cat_features = []

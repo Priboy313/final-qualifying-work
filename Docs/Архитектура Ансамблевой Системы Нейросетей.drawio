@@ -1,6 +1,6 @@
-<mxfile host="Electron" modified="2025-01-18T14:58:15.374Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.1.2 Chrome/114.0.5735.289 Electron/25.9.4 Safari/537.36" etag="NNCIzuTNp9Lcdqb5sSvn" version="22.1.2" type="device">
+<mxfile host="Electron" modified="2025-01-19T15:14:11.975Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.1.2 Chrome/114.0.5735.289 Electron/25.9.4 Safari/537.36" etag="I3ZsqZ6s04e2rWEfQvcF" version="22.1.2" type="device">
   <diagram name="Страница 1" id="-PbHmPVPx92qNtvwvaU1">
-    <mxGraphModel dx="1235" dy="731" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0">
+    <mxGraphModel dx="3500" dy="2070" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -422,6 +422,141 @@
         </mxCell>
         <mxCell id="qR7dvyqKIZMKu4I9WFlV-39" value="Постпроцессинг&lt;br&gt;и&lt;br&gt;Визуализация" style="rhombus;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
           <mxGeometry x="3320" y="420" width="160" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="qR7dvyqKIZMKu4I9WFlV-45" value="Время&lt;br&gt;День недели&lt;br&gt;Время дня" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="3840" y="80" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="qR7dvyqKIZMKu4I9WFlV-46" value="Базовая информация&lt;br&gt;Кастомные индикаторы" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="3920" y="80" width="280" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="qR7dvyqKIZMKu4I9WFlV-47" value="Финансовые индикаторы" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="4200" y="80" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="qR7dvyqKIZMKu4I9WFlV-48" value="Внутренний датасет" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="3850" y="40" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qR7dvyqKIZMKu4I9WFlV-49" value="" style="shape=link;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="100" relative="1" as="geometry">
+            <mxPoint x="3920" y="200" as="sourcePoint" />
+            <mxPoint x="3920" y="280" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qR7dvyqKIZMKu4I9WFlV-50" value="1 Уровень" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="3850" y="285" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qR7dvyqKIZMKu4I9WFlV-51" value="Время&lt;br&gt;День недели&lt;br&gt;Время дня" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="3960" y="200" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="qR7dvyqKIZMKu4I9WFlV-52" value="Базовая информация&lt;br&gt;Кастомные индикаторы" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="4040" y="200" width="280" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="qR7dvyqKIZMKu4I9WFlV-53" value="" style="shape=link;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="100" relative="1" as="geometry">
+            <mxPoint x="3920" y="190" as="sourcePoint" />
+            <mxPoint x="3920" y="410" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qR7dvyqKIZMKu4I9WFlV-54" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="4330" y="240" as="sourcePoint" />
+            <mxPoint x="4390" y="240" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qR7dvyqKIZMKu4I9WFlV-55" value="Предсказание 1" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="4400" y="200" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="qR7dvyqKIZMKu4I9WFlV-56" value="Время&lt;br&gt;День недели&lt;br&gt;Время дня" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="3960" y="320" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="qR7dvyqKIZMKu4I9WFlV-57" value="Финансовые индикаторы" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="4040" y="320" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="qR7dvyqKIZMKu4I9WFlV-58" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="4330" y="360" as="sourcePoint" />
+            <mxPoint x="4390" y="360" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qR7dvyqKIZMKu4I9WFlV-59" value="Предсказание 2" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="4400" y="320" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="qR7dvyqKIZMKu4I9WFlV-60" value="Время&lt;br&gt;День недели&lt;br&gt;Время дня" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="3840" y="440" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="qR7dvyqKIZMKu4I9WFlV-61" value="Базовая информация&lt;br&gt;Кастомные индикаторы" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="3920" y="440" width="280" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="qR7dvyqKIZMKu4I9WFlV-62" value="Финансовые индикаторы" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="4200" y="440" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="qR7dvyqKIZMKu4I9WFlV-63" value="Предсказание 1" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="4360" y="440" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="qR7dvyqKIZMKu4I9WFlV-64" value="Предсказание 2" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="4480" y="440" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="qR7dvyqKIZMKu4I9WFlV-65" value="" style="shape=link;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="100" relative="1" as="geometry">
+            <mxPoint x="3920" y="560" as="sourcePoint" />
+            <mxPoint x="3920" y="640" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qR7dvyqKIZMKu4I9WFlV-66" value="2 Уровень" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="3850" y="645" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qR7dvyqKIZMKu4I9WFlV-67" value="" style="shape=link;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="100" relative="1" as="geometry">
+            <mxPoint x="3920" y="550" as="sourcePoint" />
+            <mxPoint x="3920" y="770" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qR7dvyqKIZMKu4I9WFlV-68" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="3940" y="299.41" as="sourcePoint" />
+            <mxPoint x="4540" y="299.41" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qR7dvyqKIZMKu4I9WFlV-69" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="3940" y="660" as="sourcePoint" />
+            <mxPoint x="4540" y="660" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qR7dvyqKIZMKu4I9WFlV-70" value="Время&lt;br&gt;День недели&lt;br&gt;Время дня" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="3960" y="560" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="qR7dvyqKIZMKu4I9WFlV-71" value="Предсказание 1" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="4040" y="560" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="qR7dvyqKIZMKu4I9WFlV-72" value="Предсказание 2" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="4160" y="560" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="qR7dvyqKIZMKu4I9WFlV-73" value="Время&lt;br&gt;День недели&lt;br&gt;Время дня" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="3960" y="680" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="qR7dvyqKIZMKu4I9WFlV-74" value="Предсказание 1" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="4040" y="680" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="qR7dvyqKIZMKu4I9WFlV-75" value="Предсказание 2" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="4160" y="680" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="qR7dvyqKIZMKu4I9WFlV-76" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="4330" y="600" as="sourcePoint" />
+            <mxPoint x="4390" y="600" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qR7dvyqKIZMKu4I9WFlV-77" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="4330" y="720" as="sourcePoint" />
+            <mxPoint x="4390" y="720" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qR7dvyqKIZMKu4I9WFlV-78" value="Предсказание&amp;nbsp;&lt;br&gt;на повышение" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="4400" y="560" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="qR7dvyqKIZMKu4I9WFlV-79" value="Предсказание&amp;nbsp;&lt;br&gt;на понижение" style="rounded=1;whiteSpace=wrap;html=1;align=center;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="4400" y="680" width="120" height="80" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
